@@ -29,7 +29,7 @@
        >
         <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <beans:property name="url"
-            value="jdbc:mysql://localhost:3306/SpringMVCHibernateTestDB" />
+            value="jdbc:mysql://localhost:3306/musicstore" />
         <beans:property name="username" value="root" />
         <beans:property name="password" value="" />
     </beans:bean>
@@ -40,7 +40,7 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>com.journaldev.spring.model.Person</beans:value>
+                <beans:value>com.musicstore.model.Song</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -53,13 +53,13 @@
         </beans:property>
     </beans:bean>
      
-    <beans:bean id="personDAO" class="com.journaldev.spring.dao.PersonDAOImpl">
+    <beans:bean id="songDAO" class="com.musicstore.dao.SongDAOImpl">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
-    <beans:bean id="personService" class="com.journaldev.spring.service.PersonServiceImpl">
-        <beans:property name="personDAO" ref="personDAO"></beans:property>
+    <beans:bean id="songService" class="com.musicstore.service.SongServiceImpl">
+        <beans:property name="songDAO" ref="songDAO"></beans:property>
     </beans:bean>
-    <context:component-scan base-package="com.journaldev.spring" />
+    <context:component-scan base-package="com.musicstore" />
      
     <tx:annotation-driven transaction-manager="transactionManager"/>
      
