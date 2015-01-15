@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -39,7 +38,7 @@
 					class="dropdown-toggle">Manage Songs<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="/MusicStore/getAddSongPage">Add Song</a></li>
-						<li><a href="/MusicStore/viewSongs">View Songs</a></li>
+						<li><a href="/MusicStore/	">View Songs</a></li>
 					</ul></li>
 			</ul>
 

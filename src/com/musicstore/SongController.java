@@ -30,24 +30,19 @@ public class SongController {
 		this.songService = ps;
 	}
 
+		
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String display(Model model) {
-
-		return "home";
-	}
-	
-	@RequestMapping(value = "/viewSongs", method = RequestMethod.GET)
 	public String getSongsListPage(Model model) {
 
 		model.addAttribute("songs", songService.listSongs());
-		return "songsList";		
+		return "Listing";		
 	}
 
 	@RequestMapping(value = "/getAddSongPage", method = RequestMethod.GET)
 	public String getAddSongPage(Model model) {
 
 		model.addAttribute("newSong", new Song());
-		return "addSong";
+		return "AddNewSong";
 	}
 
 	@RequestMapping(value = "/addSong", method = RequestMethod.POST)
@@ -56,16 +51,16 @@ public class SongController {
 
 		if(result.hasErrors())
 		{
-			return "addSong";
+			return "AddNewSong";
 		}
 		
 		try{
 		songService.addSong(song);
 		}catch(Exception ex){			
 			model.addAttribute("error","The name and artist pair you entered already exists");
-		    return "addSong";
+		    return "AddNewSong";
 		}
-		return "redirect:/viewSongs/";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/editSong/{id}", method = RequestMethod.GET)
@@ -73,7 +68,7 @@ public class SongController {
 
 		Song song = songService.getSongById(id);
 		model.addAttribute("song", song);
-		return "editSong";
+		return "EditExisitngSong";
 	}
 
 	@RequestMapping(value = "/updateSong", method = RequestMethod.POST)
@@ -83,14 +78,14 @@ public class SongController {
 		songService.updateSong(song);
 
 		model.addAttribute("songs", songService.listSongs());
-		return "redirect:/viewSongs";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/removeSong/{id}")
 	public String removeSong(@PathVariable("id") int id) {
 
 		this.songService.removeSong(id);
-		return "redirect:/viewSongs/";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/searchSong", method = RequestMethod.GET)
@@ -98,7 +93,7 @@ public class SongController {
 			Model model) {
 		List<Song> songs = songService.findSongs(criteria);
 		model.addAttribute("songs", songs);
-		return "songsList";
+		return "Listing";
 	}
 
 }

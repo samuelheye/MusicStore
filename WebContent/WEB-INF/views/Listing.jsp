@@ -27,7 +27,7 @@
 				<td>${song.unitPrice * song.quantityInStock}</td>
 
 				<td><a href="<c:url value='/editSong/${song.id}' />">Edit</a></td>
-				<td><a href="<c:url value='/removeSong/${song.id}' />">Delete</a></td>
+				<td><a href="<c:url value='/removeSong/${song.id}' />" onclick="return confirm('Are you sure you want to delete the song with name ${song.name}?');">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</c:if>
